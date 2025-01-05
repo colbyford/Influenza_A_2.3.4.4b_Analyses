@@ -2,8 +2,8 @@
 library(strainhub)
 
 ## Read in tree, metadata, and geodata
-treedata <- ape::read.nexus("H5N1_N2_HA_nuc_djv28_Pulit-Penaloza-no-gap-0-is-2024-host-only.nexus")
-metadata <- readr::read_csv("H5N1_N2_HA_nuc_djv28_Pulit-Penaloza-no-gap-0-is-2024-host-only_metadata.csv", col_names = TRUE)
+treedata <- ape::read.nexus("../data/H5N1_N2_HA_nuc_djv28_Pulit-Penaloza-no-gap-0-is-2024-host-only.nexus")
+metadata <- readr::read_csv("../data/H5N1_N2_HA_nuc_djv28_Pulit-Penaloza-no-gap-0-is-2024-host-only_metadata.csv", col_names = TRUE)
 # geodata <- readr::read_csv("", col_names = TRUE)
 
 
@@ -16,7 +16,7 @@ list_states(treedata,
 ## Make the Transmission Network
 graph <- make_transnet(treedata,
                        metadata,
-                       columnSelection = "Character",
+                       columnSelection = "Source",
                        centralityMetric = 6,
                        treeType = "parsimonious")
 
