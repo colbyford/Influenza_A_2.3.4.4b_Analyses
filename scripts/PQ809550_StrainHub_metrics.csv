@@ -1,0 +1,15 @@
+Metastates,Degree Centrality,Indegree Centrality,Outdegree Centrality,Betweenness Centrality,Closeness Centrality,Source Hub Ratio
+Accipitriformes,4,1,3,0.5,0.0434782608695652,0.75
+Animal (Other),1,1,0,0,0.0384615384615385,0
+Anseriformes,5,2,3,0,0.0434782608695652,0.6
+Artiodactyla,1,1,0,0,0.0384615384615385,0
+Aves (Other),15,3,12,25,0.0714285714285714,0.8
+Casuariiformes,1,1,0,0,0.0384615384615385,0
+Charadriiformes,3,3,0,0,0.0434782608695652,0
+Falconiformes,2,2,0,0,0.032258064516129,0
+Galliformes,8,3,5,3.5,0.05,0.625
+Mammal (Other),1,1,0,0,0.0384615384615385,0
+Passeriformes,2,2,0,0,0.0416666666666667,0
+Primates,1,1,0,0,0.0384615384615385,0
+Procellariiformes,1,1,0,0,0.0384615384615385,0
+Strigiformes,1,1,0,0,0.0384615384615385,0
