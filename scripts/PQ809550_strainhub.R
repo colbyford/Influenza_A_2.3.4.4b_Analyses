@@ -1,5 +1,6 @@
 ## Load in StrainHub
 library(strainhub)
+library(dplyr)
 
 ## Read in tree, metadata, and geodata
 # treedata <- ape::read.nexus("../data/clade-of-interest-around-PQ809550-strainhub/tree0.nexus")
@@ -23,7 +24,11 @@ graph <- make_transnet(treedata,
                        centralityMetric = 6,
                        treeType = "parsimonious")
 
-print(graph)
+print(
+  graph %>% 
+    visNetwork::visPhysics(solver = "forceAtlas2Based", 
+               forceAtlas2Based = list(gravitationalConstant = -30))
+    )
 
 
 ## Make Leaflet/Swoopy map
