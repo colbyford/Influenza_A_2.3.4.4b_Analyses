@@ -43,8 +43,7 @@ nodes <- graph$x$nodes %>%
            label == "Galliformes" ~ "darkred",
            TRUE ~ "black"
          ),
-         font.size = 20)
-  
+         font.size = 40)
 
 
 edges <- graph$x$edges %>%
@@ -62,6 +61,8 @@ edges <- graph$x$edges %>%
     )
 
 visNetwork(nodes, edges) %>% 
-  visPhysics(solver = "forceAtlas2Based", 
-             forceAtlas2Based = list(gravitationalConstant = -60))
+  # visPhysics(solver = "forceAtlas2Based", 
+  #            forceAtlas2Based = list(gravitationalConstant = -60)) %>% 
+  visPhysics(solver = "forceAtlas2Based",
+             forceAtlas2Based = list(gravitationalConstant = -100))
   
