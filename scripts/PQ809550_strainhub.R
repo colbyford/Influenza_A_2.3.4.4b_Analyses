@@ -31,7 +31,37 @@ print(
     )
 
 
-## Make Leaflet/Swoopy map
-# make_map(graph,
-#          geodata = geodata,
-#          columnSelection = "Country")
+## Network Customization
+library(visNetwork)
+
+nodes <- graph$x$nodes %>%
+  mutate(shape = "dot",
+         # color = ifelse(label == "Primates", "red", "black"),
+         color = case_when(
+           label == "Primates" ~ "red",
+           label == "Anseriformes" ~ "darkred",
+           label == "Galliformes" ~ "darkred",
+           TRUE ~ "black"
+         ),
+         font.size = 20)
+  
+
+
+edges <- graph$x$edges %>%
+  mutate(
+    arrows = "to",
+    smooth = TRUE,
+    # color = ifelse(to == 12, "red", "grey"),
+    color = case_when(
+      to == 12 ~ "red",
+      from == 12 ~ "darkred",
+      TRUE ~ "lightgrey"
+    ),
+    # width = ifelse(value == 1, 1, 4),
+    # value = NULL
+    )
+
+visNetwork(nodes, edges) %>% 
+  visPhysics(solver = "forceAtlas2Based", 
+             forceAtlas2Based = list(gravitationalConstant = -60))
+  
