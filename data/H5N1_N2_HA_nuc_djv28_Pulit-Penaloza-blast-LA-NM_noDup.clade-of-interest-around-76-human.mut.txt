@@ -1,0 +1,26 @@
+Here's a list of the common variations from the Astrakhan CVV sequence:
+D104G
+L120M
+L131Q
+T143A
+T211I
+V226A/T
+S336N
+I526V
+
+Avian Influenza A(H5N1) Virus among Dairy Cattle, Texas, USA
+
+https://wwwnc.cdc.gov/eid/article/30/7/24-0717-t1
+
+Identified mutations, by gene segment, in avian influenza A(H5N1) strain A/cattle/Texas/56283/2024 (H5N1) detected in cattle on a dairy farm, Texas, USA*
+
+
+K3N, G16S, N110S, L120M, L131Q, T139P, T156A, Q185R, V194I, A201E, T211I, V226A, N252D, E284G, M285V, I298V, K492E, I526V, V538A, I547M, V548M
+
+--------------
+https://x.com/RajlabN/status/1844559496816808003
+
+A mutations: D104G, S336N is prevalent in recently uploaded seqs from CA
+
+HA mutations from  E201K/T211I from 
+pooled milk sample is interesting (need to explore further)
