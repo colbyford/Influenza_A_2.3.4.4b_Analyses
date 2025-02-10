@@ -15,8 +15,6 @@ from openmm.unit import *
 from pdbfixer import PDBFixer
 from openmm.app import PDBFile
 
-
-
 parser = argparse.ArgumentParser()
 
 parser.add_argument("--input_pdb_path", help="The file path to the input PDB protein file.")
@@ -37,8 +35,7 @@ def fix_pdb(input_pdb_path, output_pdb_path):
     fixer.findMissingAtoms()
     fixer.addMissingHydrogens()
     PDBFile.writeFile(fixer.topology, fixer.positions, open(output_pdb_path, "w"))
-
-
+    
 
 def run_simulation(input_pdb_path, input_sdf_path, output_pdb_path, platform_name='CUDA'):
     
@@ -100,7 +97,8 @@ def run_simulation(input_pdb_path, input_sdf_path, output_pdb_path, platform_nam
 
     ## Solvate
     logging.info(f"Adding solvent")
-    modeller.addSolvent(forcefield, padding=1.0*nanometer, ionicStrength=0.15*molar)
+    # modeller.addSolvent(forcefield, padding=1.0*nanometer, ionicStrength=0.15*molar)
+    modeller.addSolvent(forcefield, padding=1.0*nanometer)
 
     ## Create system
     logging.info(f"Creating system")
