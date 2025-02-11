@@ -35,7 +35,7 @@ def fix_pdb(input_pdb_path, output_pdb_path):
     fixer.findMissingAtoms()
     fixer.addMissingHydrogens()
     PDBFile.writeFile(fixer.topology, fixer.positions, open(output_pdb_path, "w"))
-    
+
 
 def run_simulation(input_pdb_path, input_sdf_path, output_pdb_path, platform_name='CUDA'):
     
@@ -55,13 +55,13 @@ def run_simulation(input_pdb_path, input_sdf_path, output_pdb_path, platform_nam
     logging.info(f"Reading in PDB")
     pdb = PDBFile(input_pdb_path)
 
-    ## Create a Modeller object
-    logging.info(f"Creating Modeller object")
-    modeller = Modeller(pdb.topology, pdb.positions)
-
     ##########
     ## LIGAND SECTION
     ##########
+
+    ## Create an OpenMM ForceField object
+    logging.info(f"Creating ForceField object")
+    forcefield = ForceField('amber/protein.ff14SB.xml', 'amber/tip3p_standard.xml')
 
     ## Create an OpenFF Molecule object from SDF file
     logging.info(f"Loading SDF file and generating template")
@@ -70,39 +70,52 @@ def run_simulation(input_pdb_path, input_sdf_path, output_pdb_path, platform_nam
 
     ## Create the SMIRNOFF template generator
     smirnoff = SMIRNOFFTemplateGenerator(molecules=molecule)
-
-    ## Create an OpenMM ForceField object
-    logging.info(f"Creating ForceField object")
-    forcefield = ForceField('amber/protein.ff14SB.xml', 'amber/tip3p_standard.xml')
-
-    ## Register the SMIRNOFF template generator
     forcefield.registerTemplateGenerator(smirnoff.generator)
 
-    ## Make an OpenFF Topology of the ligand
-    molecule_off_topology = offTopology.from_molecules(molecules=[molecule])
+    ## Generate the ligand template
+    molecule_template = smirnoff.generate_residue_template(molecule)
 
-    ## Convert it to an OpenMM Topology
-    molecule_topology = molecule_off_topology.to_openmm()
+    template_name = output_pdb_path.split('.')[0] + '_ligand.xml'
+    with open(template_name, 'w') as f:
+        f.write(molecule_template)
 
-    ## Get the positions of the ligand
-    molecule_positions = offquantity_to_openmm(molecule.conformers[0])
+    ## Create an OpenMM ForceField object
+    logging.info(f"Updating ForceField object")
+    forcefield = ForceField('amber/protein.ff14SB.xml', 'amber/tip3p_standard.xml', template_name)
 
-    ## Add the ligand to the Modeller
-    logging.info(f"Combining protein and ligand topologies")
-    modeller.add(molecule_topology, molecule_positions)
+    # ## Register the SMIRNOFF template generator
+    # forcefield.registerTemplateGenerator(smirnoff.generator)
+
+    # ## Make an OpenFF Topology of the ligand
+    # molecule_off_topology = offTopology.from_molecules(molecules=[molecule])
+
+    # ## Convert it to an OpenMM Topology
+    # molecule_topology = molecule_off_topology.to_openmm()
+
+    # ## Get the positions of the ligand
+    # molecule_positions = offquantity_to_openmm(molecule.conformers[0])
+
+    # ## Add the ligand to the Modeller
+    # logging.info(f"Combining protein and ligand topologies")
+    # modeller.add(molecule_topology, molecule_positions)
 
     ##########
     ## SIMULATION SECTION
     ##########
 
+    ## Create a Modeller object
+    logging.info(f"Creating Modeller object")
+    modeller = Modeller(pdb.topology, pdb.positions)
+
     ## Solvate
     logging.info(f"Adding solvent")
-    # modeller.addSolvent(forcefield, padding=1.0*nanometer, ionicStrength=0.15*molar)
-    modeller.addSolvent(forcefield, padding=1.0*nanometer)
+    modeller.addSolvent(forcefield, model="tip3p", padding=1.0*nanometer, ionicStrength=0.15*molar)
+    # modeller.addSolvent(forcefield, padding=1.0*nanometer)
 
     ## Create system
     logging.info(f"Creating system")
     system = forcefield.createSystem(modeller.topology, nonbondedMethod=PME, nonbondedCutoff=1.0*nanometer, constraints=HBonds)
+    # integrator = LangevinMiddleIntegrator(300*kelvin, 1/picosecond, 0.002*picoseconds)
     integrator = LangevinMiddleIntegrator(300*kelvin, 1/picosecond, 0.004*picoseconds)
 
     ## Setup Simulation
@@ -114,14 +127,26 @@ def run_simulation(input_pdb_path, input_sdf_path, output_pdb_path, platform_nam
     logging.info("Minimizing Energy")
     simulation.minimizeEnergy()
 
+    ## Equilibrate: 5000 steps
+    # logging.info("Equilibrating...")
+    # simulation.context.setVelocitiesToTemperature(300*kelvin)
+    # simulation.step(5000)
+
+    ## Run: 1 ns (500000 steps)
+    logging.info("Running simulation")
+    output_log_path = f"{output_pdb_path.split('.')[0]}.log"
+    # simulation.reporters.append(PDBReporter(output_pdb_path, 1000))
+    # simulation.reporters.append(StateDataReporter(output_log_path, 1000, step=True, potentialEnergy=True, 
+    #                                           temperature=True, volume=True, density=True, progress=True,
+    #                                           speed=True, totalSteps=500000, separator="\t"
+    #                                               ))
+
     simulation.reporters.append(PDBReporter(output_pdb_path, 1000))
     simulation.reporters.append(StateDataReporter(stdout, 1000, step=True,
             potentialEnergy=True, temperature=True, volume=True))
-
-    output_log_path = f"{output_pdb_path.split('.')[0]}.log"
-
     simulation.reporters.append(StateDataReporter(output_log_path, 100, step=True,
             potentialEnergy=True, temperature=True, volume=True))
+
 
     system.addForce(MonteCarloBarostat(1*bar, 300*kelvin))
     simulation.context.reinitialize(preserveState=True)
@@ -133,6 +158,10 @@ def run_simulation(input_pdb_path, input_sdf_path, output_pdb_path, platform_nam
     simulation.step(10000)
 
     logging.info("Simulation complete")
+
+    ## Save final structure
+    # positions = simulation.context.getState(getPositions=True).getPositions()
+    # PDBFile.writeFile(simulation.topology, positions, open("final_structure.pdb", "w"))
 
 
 ##########
