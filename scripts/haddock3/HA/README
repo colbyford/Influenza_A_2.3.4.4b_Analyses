@@ -1,0 +1,13 @@
+# Measuring Binding Affinity of H5N1 HA to Human and Avian Sailic Acid
+
+## Step 1
+Separate sialic acid from PDB structures found in science paper: "A single mutation in bovine influenza H5N1 hemagglutinin switches specificity to human receptors"
+- 4K63 - LSTa (avian)
+- 4KDO - LSTc (human)
+* Only the SIA was extracted
+
+## Step 2
+Fold sequence of H5N1 (EPI3171488 A/Texas/37/2024) HA protein using AlphaFold2.
+
+## Step 3
+Dock HA protein with the extracted structure of both LSTa and LSTc using HADDOCK3 (https://www.bonvinlab.org/education/HADDOCK3/HADDOCK3-protein-glycan/).
