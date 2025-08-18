@@ -1,0 +1,6 @@
+proc Trees/PB1_H5N1_2.3.4.4.b_nucleotide_cleaned_no_stop.mafft.tnt;
+mxram 1000;
+mult=rep100;
+tsave Trees/pb1_tree.tre;
+tplot;
+tsave/;

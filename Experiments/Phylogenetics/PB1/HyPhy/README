@@ -1,0 +1,14 @@
+# Running HyPhy in SLURM on the HPC
+
+1. You will need to install 'expect' into your environment. I did this through conda as shown below:
+
+`conda install conda-forge::expect`
+
+2. Create your expect file and change the permissions to be executible. 
+- The expect file is replacing the *.ctl file so you will need to adjust the paths to you alignment and tree in this file. 
+
+`chmod +x hyphy_expect.sh`
+
+3. Execute the SLURM script.
+
+`sbatch hyphy_slurm.sh`
