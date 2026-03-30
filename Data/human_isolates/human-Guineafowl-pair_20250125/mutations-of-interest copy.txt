@@ -1,0 +1,22 @@
+N140D
+N140H nothing in google
+A230V nothing in google
+V298I
+
+
+
+--------
+
+N140D
+
+
+https://pmc.ncbi.nlm.nih.gov/articles/PMC10810642/
+Altogether, these results indicate that the amino acid positions N199S, T204I, and N205S seem to be key elements that contribute to the binding affinity of #23.3 mAb, and that S136D, P139S, N140D, and T143A contribute to the interaction between #11.4 mAb and the HA antigen target
+
+------
+V298I
+https://pmc.ncbi.nlm.nih.gov/articles/PMC2760557/
+stated not interesting but looked at
+==============
+https://pmc.ncbi.nlm.nih.gov/articles/PMC3675404/
+Comparison of amino acid sequences showed that there was no difference in the RBS sequence of HA between the H7N9 virus from this patient and those from other patients. However, the comparison between H7N3 and the novel H7N9 suggested that variants K181R, D183S/N, I188V, I211V and V298I in RBS of HA may be crucial for the novel H7N9 virus to evolve the ability to infect humans (Figure 3).

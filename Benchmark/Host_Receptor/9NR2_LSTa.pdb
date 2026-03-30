@@ -1,0 +1,66 @@
+CRYST1  187.241  100.397  132.067  90.00 125.93  90.00 C 1 2 1       1
+HETATM    1  C1  GAL I   1      38.582  46.681  66.703  1.00110.64           C  
+HETATM    2  O1  GAL I   1      38.636  48.016  67.042  1.00112.54           O  
+HETATM    3  C2  GAL I   1      37.162  46.172  66.922  1.00111.48           C  
+HETATM    4  O2  GAL I   1      36.847  46.297  68.286  1.00102.04           O  
+HETATM    5  C3  GAL I   1      37.082  44.720  66.461  1.00111.98           C  
+HETATM    6  O3  GAL I   1      35.754  44.319  66.698  1.00106.08           O  
+HETATM    7  C4  GAL I   1      37.518  44.610  64.999  1.00105.54           C  
+HETATM    8  O4  GAL I   1      36.567  45.266  64.195  1.00103.19           O  
+HETATM    9  C5  GAL I   1      38.917  45.225  64.862  1.00107.73           C  
+HETATM   10  O5  GAL I   1      38.928  46.554  65.344  1.00117.04           O  
+HETATM   11  C6  GAL I   1      39.399  45.241  63.427  1.00 98.33           C  
+HETATM   12  O6  GAL I   1      40.583  44.488  63.322  1.00 90.67           O  
+HETATM   13  C1  SIA I   2      34.109  42.790  67.532  1.00106.82           C  
+HETATM   14  O1A SIA I   2      33.871  43.052  68.745  1.00115.58           O  
+HETATM   15  O1B SIA I   2      33.317  42.446  66.625  1.00 99.44           O  
+HETATM   16  C2  SIA I   2      35.645  42.958  67.171  1.00 99.99           C  
+HETATM   17  C3  SIA I   2      36.552  42.531  68.332  1.00105.36           C  
+HETATM   18  C4  SIA I   2      36.317  41.073  68.743  1.00 95.28           C  
+HETATM   19  O4  SIA I   2      37.174  40.655  69.820  1.00114.98           O  
+HETATM   20  C5  SIA I   2      36.580  40.136  67.562  1.00 90.07           C  
+HETATM   21  N5  SIA I   2      36.112  38.782  67.851  1.00 70.05           N  
+HETATM   22  C6  SIA I   2      35.878  40.627  66.269  1.00 92.95           C  
+HETATM   23  O6  SIA I   2      35.970  42.035  66.076  1.00101.92           O  
+HETATM   24  C7  SIA I   2      36.572  40.051  65.012  1.00 98.80           C  
+HETATM   25  O7  SIA I   2      37.966  39.893  65.252  1.00 89.14           O  
+HETATM   26  C8  SIA I   2      36.288  40.935  63.775  1.00 96.27           C  
+HETATM   27  O8  SIA I   2      34.899  41.258  63.710  1.00101.36           O  
+HETATM   28  C9  SIA I   2      36.776  40.268  62.494  1.00 84.57           C  
+HETATM   29  O9  SIA I   2      36.404  41.071  61.373  1.00 94.51           O  
+HETATM   30  C10 SIA I   2      36.885  37.665  67.818  1.00 89.27           C  
+HETATM   31  O10 SIA I   2      38.084  37.659  67.548  1.00 95.91           O  
+HETATM   32  C11 SIA I   2      36.155  36.367  68.154  1.00 73.91           C  
+CONECT    1    2    3   10
+CONECT    2    1
+CONECT    3    1    4    5
+CONECT    4    3
+CONECT    5    3    6    7
+CONECT    6    5   16
+CONECT    7    5    8    9
+CONECT    8    7
+CONECT    9    7   10   11
+CONECT   10    1    9
+CONECT   11    9   12
+CONECT   12   11
+CONECT   13   14   15   16
+CONECT   14   13
+CONECT   15   13
+CONECT   16    6   13   17   23
+CONECT   17   16   18
+CONECT   18   17   19   20
+CONECT   19   18
+CONECT   20   18   21   22
+CONECT   21   20   30
+CONECT   22   20   23   24
+CONECT   23   16   22
+CONECT   24   22   25   26
+CONECT   25   24
+CONECT   26   24   27   28
+CONECT   27   26
+CONECT   28   26   29
+CONECT   29   28
+CONECT   30   21   31   32
+CONECT   31   30
+CONECT   32   30
+END

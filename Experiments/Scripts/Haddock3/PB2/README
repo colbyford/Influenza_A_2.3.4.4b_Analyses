@@ -1,0 +1,20 @@
+# Measuring Binding Affinity of H5N1 PB2 to Various Target Host Proteins
+
+## Step 1
+Fold both PB2 and target proteins listed within Experiments.xlsx file using `scripts/1_Folding.py`
+
+## Step 2
+Combine the PB2 and Target proteins sheet of the excel file to create a list of each PB2 to Target combination. Use `scripts/2_post_fold.py`
+
+## Step 3
+Modify the number and chain ID of the target proteins using PyMol in preparation for HADDOCK3 docking. Use `scripts/3_mod_protein2.py`
+
+## Step 4
+Create the experiment directories along with the configuration files and the ambig files that are used by HADDOCK3 as parameters. Use `scripts/4_configs.py`
+
+## Step 5
+Begin docking experiments. The output for each of the docking experiments will be in their respective directory in 2_Docking. Use `scripts/5_docking.py`
+
+## Step 6
+Extract the binding metrics from each docking experiment and add it to the Experiments.xlsx. Simultaneously the best preforming docked structures will be copied to a directory labeled 'Top_Models' and Prodigy scores will be calculated and added to the list of binding metrics. This will produce the final table in 'Experiments_final.xlsx'. Use `scripts/6_prodigy.py`
+

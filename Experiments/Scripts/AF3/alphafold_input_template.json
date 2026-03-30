@@ -1,0 +1,24 @@
+{
+    "name": "jobname",
+    "modelSeeds": [
+      1337
+    ],
+    "sequences": [
+      {
+        "protein": {
+          "id": "A",
+          "sequence": ""
+        }
+      },
+      {
+        "ligand": {
+          "id": "B",
+          "smiles": [
+            ""
+          ]
+        }
+      }
+    ],
+    "dialect": "alphafold3",
+    "version": 1
+}
