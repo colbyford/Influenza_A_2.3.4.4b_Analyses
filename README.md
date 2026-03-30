@@ -1,7 +1,7 @@
 # Computational Structural Analysis Predicts Host Range Promiscuity and Antiviral Resistance in North American H5N1 Lineages
 
 
-<h3 align="right">Daniel Janies, Kary Ocaña, Sayal Guirales-Medrano, Khaled Obied, Rachel Alexander, and Colby T. Ford</h3>
+<h3 align="right">Sayal Guirales-Medrano, Kary Ocaña, Khaled Obied, Rachel Alexander, Colby T. Ford, and Daniel Janies</h3>
 
 [![Preprint](https://img.shields.io/badge/bioRxiv-10.1101/2025.03.15.641219-bb2635?style=for-the-badge&logo=read.cv)](https://www.biorxiv.org/content/10.1101/2025.03.15.641219)
 
