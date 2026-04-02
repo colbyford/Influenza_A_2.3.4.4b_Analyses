@@ -3,8 +3,10 @@
 
 <h3 align="right">Sayal Guirales-Medrano, Kary Ocaña, Khaled Obied, Rachel Alexander, Colby T. Ford, and Daniel Janies</h3>
 
-[![Preprint](https://img.shields.io/badge/bioRxiv-10.1101/2025.03.15.641219-bb2635?style=for-the-badge&logo=read.cv)](https://www.biorxiv.org/content/10.1101/2025.03.15.641219)
+<!-- [![Preprint](https://img.shields.io/badge/bioRxiv-10.1101/2025.03.15.641219-bb2635?style=for-the-badge&logo=read.cv)](https://www.biorxiv.org/content/10.1101/2025.03.15.641219) -->
 
+
+[![Paper](https://img.shields.io/badge/Computational_and_Structural_Biotechnology_Journal-10.34133/csbj.0066-00558b?style=for-the-badge&logo=read.cv)](https://spj.science.org/doi/abs/10.34133/csbj.0066)
 
 ## Abstract
 
