@@ -15,6 +15,8 @@ Influenza A virus has been circulating in birds in Eurasia for more than 146 yea
 
 ## Citation
 
+Sayal Guirales-Medrano, Kary Ocaña, Khaled Obeid, Rachel Alexander, Colby T Ford, Daniel Janies. Computational Structural Analysis Predicts Host Range Promiscuity and Antiviral Resistance in North American H5N1 Lineages. *Comput Struct Biotechnol J.* 0:DOI:10.34133/csbj.0066
+
 
 ```bibtex
 @article{doi:10.34133/csbj.0066,
